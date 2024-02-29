@@ -12,7 +12,7 @@
             HOOK_OS_NAME: ${{ runner.os }}
             WORKFLOW_NAME: ${{ github.workflow }}
           run: |
-            git clone https://github.com/FreedomCraft-Network/github-actions-discord-webhook.git gitea
+            git clone -b gitea https://github.com/FreedomCraft-Network/github-actions-discord-webhook.git webhook
             bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
           shell: bash
     ```
