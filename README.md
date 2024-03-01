@@ -3,14 +3,12 @@
 1. In Gitea secrets, add a `WEBHOOK_URL` variable with the Discord web hook URL
 1. In your Gitea actions yml file, add this to reference the variable you just created:
     ```yaml
-  status:
-      if: ${{ always() }}
-      needs: [job]
-      steps:
         - uses: ruby/setup-ruby@v1
+          if: ${{ !cancelled() }}
           with:
             ruby-version: '3.3'           
         - name: Send Webhook Notification
+          if: ${{ !cancelled() }}
           env:
             JOB_STATUS: ${{ job.status }}
             WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
