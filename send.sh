@@ -45,10 +45,10 @@ BRANCH_OR_PR="Branch"
 BRANCH_OR_PR_URL="$REPO_URL/src/branch/$BRANCH_NAME"
 ACTION_URL="$REPO_URL/actions/runs/$GITHUB_RUN_NUMBER"
 COMMIT_OR_PR_URL=$COMMIT_URL
-if [ "$AUTHOR_NAME" == "$COMMITTER_NAME" ]; then
-  CREDITS="$AUTHOR_NAME authored & committed"
+if [ "$GITHUB_ACTOR" == "$COMMITTER_NAME" ]; then
+  CREDITS="$GITHUB_ACTOR authored & committed"
 else
-  CREDITS="$AUTHOR_NAME authored & $COMMITTER_NAME committed"
+  CREDITS=" $GITHUB_ACTOR authored & $COMMITTER_NAME committed"
 fi
 
 if [ "$GITHUB_EVENT_NAME" == "pull_request" ]; then
